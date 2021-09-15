@@ -1,6 +1,6 @@
 #include "SimpleTCP.h"
 
-SimpleTCP myTCP("CompaxNet","Bosmannen");
+SimpleTCP myTCP("ssid","password");
 
 void setup() {
     Serial.begin(115200);
