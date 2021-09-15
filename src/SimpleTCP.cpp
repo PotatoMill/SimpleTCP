@@ -16,7 +16,7 @@ SimpleTCP::SimpleTCP(char* ssid , char* password){
     WiFiServer wifiServer(80);
     WiFiClient client;
 }
-void SimpleTCP::begin(){
+void SimpleTCP::begin(char mDNS[]){
     WiFi.begin(_ssid, _password);
 
     while (WiFi.status() != WL_CONNECTED) {
@@ -24,7 +24,7 @@ void SimpleTCP::begin(){
         Serial.println("Connecting to WiFi..");
     }
 
-    if(!MDNS.begin("esp32")){
+    if(!MDNS.begin(mDNS)){
         Serial.println("Error starting mDNS");
     }
 
