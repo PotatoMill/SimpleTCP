@@ -22,6 +22,7 @@ myTCP.checkConnection()
 
 install by adding in the platformio.ini file:
 
+```
 lib_deps =
   https://github.com/PotatoMill/SimpleTCP @ ^0.1.0
-
+```
