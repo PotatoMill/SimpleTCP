@@ -20,7 +20,7 @@ myTCP.println(text)
 
 myTCP.checkConnection()
 
-install by adding in the platformio.ini file:
+install by adding the line below in the platformio.ini text file
 
 ```
 lib_deps =
