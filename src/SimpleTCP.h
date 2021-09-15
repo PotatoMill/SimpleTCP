@@ -13,7 +13,7 @@ class SimpleTCP
 {
     public:
         SimpleTCP(char* ssid , char* password);
-        void begin(char mDNS[] = "esp32");
+        void begin(char mDNS[]);
         void println(char newString[]);
         void print(char newString[]);
         void checkConnection();
