@@ -1,6 +1,6 @@
 # SimpleTCP
-Small ESP32 library to make it easier to prit via TCP
-All included libraries should already be includerd in ESP32 arduino
+Small ESP32 library to make it easier to prit via TCP  
+All included libraries should already be includerd in ESP32 arduino  
 The mDSN is set to ESP32 so ESP32.local can be used if zeroconf is set up
 
 
