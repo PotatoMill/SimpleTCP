@@ -1,7 +1,9 @@
 # SimpleTCP
 Small ESP32 library to make it easier to prit via TCP  
-All included libraries should already be includerd in ESP32 arduino  
+All included libraries should already be included in ESP32 arduino  
 The mDSN is set to ESP32 so ESP32.local can be used if zeroconf is set up
+
+note, ADC2 does not work with WiFi wich is GPIO0, GPIO2, GPIO4, GPIO12 - GPIO15, GOIO25 - GPIO27
 
 
 How to use:
