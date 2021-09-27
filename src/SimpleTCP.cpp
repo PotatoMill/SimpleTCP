@@ -10,13 +10,13 @@
 #include "WiFi.h"
 #include "ESPmDNS.h"
 
-SimpleTCP::SimpleTCP(char* ssid , char* password){
+SimpleTCP::SimpleTCP(char* ssid ,char* password){
     _ssid = ssid;
     _password = password;
     WiFiServer wifiServer(80);
     WiFiClient client;
 }
-void SimpleTCP::begin(char mDNS[]){
+void SimpleTCP::begin(const char mDNS[]){
     WiFi.begin(_ssid, _password);
 
     while (WiFi.status() != WL_CONNECTED) {
@@ -34,7 +34,7 @@ void SimpleTCP::begin(char mDNS[]){
     wifiServer.begin();
     MDNS.addService("http", "tcp", 80);
 }
-void SimpleTCP::println(char newString[]){
+void SimpleTCP::println(const char newString[]){
     if(client.connected()){
         client.println(newString);
         Serial.print("Sending: ");
@@ -42,7 +42,15 @@ void SimpleTCP::println(char newString[]){
     }
     else Serial.println("failed to send info");
 }
-void SimpleTCP::print(char newString[]){
+void SimpleTCP::println(int newString){
+    if(client.connected()){
+        client.println(newString);
+        Serial.print("Sending: ");
+        Serial.println(newString);
+    }
+    else Serial.println("failed to send info");
+}
+void SimpleTCP::print(const char newString[]){
     if(client.connected()){
         client.print(newString);
         Serial.print("Sending: ");
@@ -62,4 +70,38 @@ void SimpleTCP::checkConnection(){
       Serial.println("looking for new client");
     }
   }
+}
+int SimpleTCP::read(){
+    //sjekker om man er koblet til er ikke vits i å bruke tid hvis man ikke er koblet til
+    if(!client.connected()){
+        Serial.println("client not connected");
+        return 0;
+    }
+    //sjekker at det er data klart so kan leses ellers så avslutter den
+    if(!client.available()){
+        Serial.println("no data avalable to read");
+        return 0;
+    }
+    return client.read();
+}
+String SimpleTCP::readline(){
+    //sjekker om man er koblet til er ikke vits i å bruke tid hvis man ikke er koblet til
+    if(!client.connected()){
+        Serial.println("client not connected");
+        return "0";
+    }
+    //sjekker at det er data klart so kan leses ellers så avslutter den
+    if(!client.available()){
+        Serial.println("no data avalable to read");
+        return "0";
+    }
+    //leser karakterer fram til ny linje symbolet
+    return client.readStringUntil('\n');
+}
+int SimpleTCP::available(){
+    if(!client.connected()){
+        Serial.println("client not connected");
+        return 0;
+    }
+    return client.available();
 }

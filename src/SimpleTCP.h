@@ -12,11 +12,15 @@
 class SimpleTCP
 {
     public:
-        SimpleTCP(char* ssid , char* password);
-        void begin(char mDNS[] = "esp32");
-        void println(char newString[]);
-        void print(char newString[]);
+        SimpleTCP(char* ssid ,char* password);
+        void begin(const char mDNS[]);
+        void println(const char newString[]);
+        void println(int newString);
+        void print(const char newString[]);
         void checkConnection();
+        int read();
+        String readline();
+        int available();
     private:
     char* _ssid;
     char* _password;
