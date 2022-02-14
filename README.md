@@ -9,7 +9,7 @@ note, ADC2 does not work with WiFi wich is GPIO0, GPIO2, GPIO4, GPIO12 - GPIO15,
 How to use:
 1. Initialise the SimpleTCP class
 2. In the setup add the begin() function
-3. In the main loop check connection and update connection use checkConnection
+3. In the main loop use checkConnection(), to check the connection and try to reconnect if the connection is lost
 4. To print the "ptint" and "println" function can be used
 
 
