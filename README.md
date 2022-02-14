@@ -24,6 +24,8 @@ myTCP.println(text)
 
 myTCP.checkConnection()
 
+myTCP.readline()
+
 install by adding the line below in the platformio.ini text file
 
 ```
