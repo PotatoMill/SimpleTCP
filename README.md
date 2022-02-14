@@ -28,5 +28,5 @@ install by adding the line below in the platformio.ini text file
 
 ```
 lib_deps =
-  https://github.com/PotatoMill/SimpleTCP @ ^0.1.0
+  https://github.com/PotatoMill/SimpleTCP.git
 ```
